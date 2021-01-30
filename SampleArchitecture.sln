@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleArchitecture.Api", "SampleArchitecture.Api\SampleArchitecture.Api.csproj", "{EBB97E11-B4B5-4DEA-BF07-C171C8B31E73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleArchitecture.Api.Models", "SampleArchitecture.Api.Models\SampleArchitecture.Api.Models.csproj", "{33D06590-A542-412F-8146-85142C9077DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBB97E11-B4B5-4DEA-BF07-C171C8B31E73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB97E11-B4B5-4DEA-BF07-C171C8B31E73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB97E11-B4B5-4DEA-BF07-C171C8B31E73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB97E11-B4B5-4DEA-BF07-C171C8B31E73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33D06590-A542-412F-8146-85142C9077DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33D06590-A542-412F-8146-85142C9077DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33D06590-A542-412F-8146-85142C9077DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33D06590-A542-412F-8146-85142C9077DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A78DB65-4005-4405-AB35-5D3B84D1775F}
+	EndGlobalSection
+EndGlobal
