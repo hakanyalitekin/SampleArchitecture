@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SampleArchitecture.Api.Models
 {
-   public class Contact
+    public class ContactDTO
     {
         public int Id { get; set; }
-        public String FullName { get; set; }
+        public string FullName { get; set; }
     }
 }
