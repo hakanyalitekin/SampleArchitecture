@@ -1,3 +1,5 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,7 +11,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SampleArchitecture.Api.Extensions;
+using SampleArchitecture.Api.Models;
 using SampleArchitecture.Api.Service;
+using SampleArchitecture.Api.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +32,13 @@ namespace SampleArchitecture.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureMapping(); //MappingConfigureExtension içerisinde barýnýyor.
+            services.AddControllers()
+                .AddFluentValidation(i=> i.RunDefaultMvcValidationAfterFluentValidationExecutes = false);
+            // RunDefaultMvcValidationAfterFluentValidationExecutes zorunlu deðil öncelik sýrasýný belirliyor.
+            //Adýndandan da anlaþýyor maksadý.
 
+            services.ConfigureMapping(); //MappingConfigureExtension içerisinde barýnýyor.
             services.AddHealthChecks();
-            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SampleArchitecture.Api", Version = "v1" });
@@ -39,6 +46,8 @@ namespace SampleArchitecture.Api
 
 
             services.AddScoped<IContactService, ContactService>();
+
+            services.AddTransient<IValidator<ContactDTO>, ContactValidator>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

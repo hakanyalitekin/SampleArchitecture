@@ -33,5 +33,12 @@ namespace SampleArchitecture.Api.Controllers
         {
             return _contactService.GetContactById(id);
         }
+
+        [HttpPost]
+        public ContactDTO CreateContact (ContactDTO contact)
+        {
+            //FluentValidation'u test etmek için ekledik.
+            return contact;
+        }
     }
 }
