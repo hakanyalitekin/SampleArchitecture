@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleArchitecture.Api.Mode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleArchitecture.Api.Data.Models", "SampleArchitecture.Api.Data.Models\SampleArchitecture.Api.Data.Models.csproj", "{CD8904EF-6285-4A53-A077-62A7CB39F451}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleArchitecture.Api.Service", "SampleArchitecture.Api.Service\SampleArchitecture.Api.Service.csproj", "{2B64C5D6-D296-4369-AEC6-E4D6BBB71D4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleArchitecture.Api.Service", "SampleArchitecture.Api.Service\SampleArchitecture.Api.Service.csproj", "{2B64C5D6-D296-4369-AEC6-E4D6BBB71D4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
