@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using SampleArchitecture.Api.Models;
+using SampleArchitecture.Api.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +15,23 @@ namespace SampleArchitecture.Api.Controllers
     public class ContactController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public ContactController(IConfiguration configuration)
+        private readonly IContactService _contactService;
+
+        public ContactController(IConfiguration configuration, IContactService contactService)
         {
             _configuration = configuration;
+            _contactService = contactService;
         }
         [HttpGet]
         public string Get()
         {
             return _configuration["ReadMe"].ToString();
+        }
+
+        [HttpGet("id")]
+        public ContactDTO GetContactById(int id)
+        {
+            return _contactService.GetContactById(id);
         }
     }
 }
