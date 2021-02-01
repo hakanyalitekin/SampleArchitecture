@@ -28,6 +28,7 @@ namespace SampleArchitecture.Api.Controllers
             return _configuration["ReadMe"].ToString();
         }
 
+        [ResponseCache(Duration = 10)] //Saniye 
         [HttpGet("id")]
         public ContactDTO GetContactById(int id)
         {
@@ -35,7 +36,7 @@ namespace SampleArchitecture.Api.Controllers
         }
 
         [HttpPost]
-        public ContactDTO CreateContact (ContactDTO contact)
+        public ContactDTO CreateContact(ContactDTO contact)
         {
             //FluentValidation'u test etmek için ekledik.
             return contact;

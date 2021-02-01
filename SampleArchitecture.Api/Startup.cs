@@ -33,20 +33,18 @@ namespace SampleArchitecture.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .AddFluentValidation(i=> i.RunDefaultMvcValidationAfterFluentValidationExecutes = false);
-            // RunDefaultMvcValidationAfterFluentValidationExecutes zorunlu deðil öncelik sýrasýný belirliyor.
-            //Adýndandan da anlaþýyor maksadý.
-
+                .AddFluentValidation(i=> i.RunDefaultMvcValidationAfterFluentValidationExecutes = false);// RunDefaultMvcValidationAfterFluentValidationExecutes zorunlu deðil öncelik sýrasýný belirliyor.Adýndandan da anlaþýyor maksadý.
+            
             services.ConfigureMapping(); //MappingConfigureExtension içerisinde barýnýyor.
+
             services.AddHealthChecks();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SampleArchitecture.Api", Version = "v1" });
             });
 
-
             services.AddScoped<IContactService, ContactService>();
-
             services.AddTransient<IValidator<ContactDTO>, ContactValidator>();
         }
 
@@ -60,6 +58,8 @@ namespace SampleArchitecture.Api
             }
 
             app.UseCustomHealthCheck(); //HealthCheckConfigureExtension içerisinde barýnýyor.
+
+            app.UseResponseCaching(); //ResponseCaching için hazýr paket.
 
             app.UseHttpsRedirection();
 
