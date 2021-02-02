@@ -32,9 +32,17 @@ namespace SampleArchitecture.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddHttpClient("garantiApi", config =>
+            {
+                config.BaseAddress = new Uri("https://garantipi.com/v1");
+                config.DefaultRequestHeaders.Add("Authorization", "Bearer 1231313113");
+            });
+
+
             services.AddControllers()
-                .AddFluentValidation(i=> i.RunDefaultMvcValidationAfterFluentValidationExecutes = false);// RunDefaultMvcValidationAfterFluentValidationExecutes zorunlu deðil öncelik sýrasýný belirliyor.Adýndandan da anlaþýyor maksadý.
-            
+                .AddFluentValidation(i => i.RunDefaultMvcValidationAfterFluentValidationExecutes = false);// RunDefaultMvcValidationAfterFluentValidationExecutes zorunlu deðil öncelik sýrasýný belirliyor.Adýndandan da anlaþýyor maksadý.
+
             services.ConfigureMapping(); //MappingConfigureExtension içerisinde barýnýyor.
 
             services.AddHealthChecks();

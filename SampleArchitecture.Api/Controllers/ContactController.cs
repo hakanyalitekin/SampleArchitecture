@@ -6,6 +6,7 @@ using SampleArchitecture.Api.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace SampleArchitecture.Api.Controllers
@@ -16,12 +17,24 @@ namespace SampleArchitecture.Api.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IContactService _contactService;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public ContactController(IConfiguration configuration, IContactService contactService)
+        public ContactController(IConfiguration configuration, IContactService contactService, IHttpClientFactory httpClientFactory)
         {
             _configuration = configuration;
             _contactService = contactService;
+            _httpClientFactory = httpClientFactory;
         }
+
+
+        [HttpGet("TestHttpClientBaseAddress")]
+        public string TestHttpClientBaseAddress()
+        {
+            var client = _httpClientFactory.CreateClient("garantiApi"); // Startup içerisindeki isimlendirme ile aynı olmalı.
+
+            return client.BaseAddress.ToString(); //Oluşup oluşmadığını test etmek için.
+        }
+
         [HttpGet]
         public string Get()
         {
