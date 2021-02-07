@@ -1,6 +1,7 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SampleArchitecture.Api.Extensions;
+using SampleArchitecture.Api.Middlewares;
 using SampleArchitecture.Api.Models;
 using SampleArchitecture.Api.Service;
 using SampleArchitecture.Api.Validations;
@@ -68,6 +70,10 @@ namespace SampleArchitecture.Api
             app.UseCustomHealthCheck(); //HealthCheckConfigureExtension içerisinde barýnýyor.
 
             app.UseResponseCaching(); //ResponseCaching için hazýr paket.
+
+            app.UseMiddleware<Middlewares.ExceptionHandlerMiddleware>();
+
+            //app.UseExceptionHandler(x => x.Run(_ => Task.CompletedTask));
 
             app.UseHttpsRedirection();
 

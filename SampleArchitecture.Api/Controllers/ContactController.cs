@@ -54,5 +54,13 @@ namespace SampleArchitecture.Api.Controllers
             //FluentValidation'u test etmek için ekledik.
             return contact;
         }
+
+
+        [HttpGet("GetException")]
+        public void GetException()
+        {
+            throw new Exception("Deneme");
+        }
+
     }
 }
