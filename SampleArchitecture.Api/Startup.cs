@@ -71,7 +71,9 @@ namespace SampleArchitecture.Api
 
             app.UseResponseCaching(); //ResponseCaching için hazýr paket.
 
-            app.UseMiddleware<Middlewares.ExceptionHandlerMiddleware>();
+            app.UseMiddleware<Middlewares.ExceptionHandlerMiddleware>(); //Global hata yakalamak ve loglamak için
+
+            app.UseMiddleware<RequestResponseMiddleware>(); //Request Response Logging
 
             //app.UseExceptionHandler(x => x.Run(_ => Task.CompletedTask));
 
